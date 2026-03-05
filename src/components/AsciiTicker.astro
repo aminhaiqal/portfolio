@@ -1,0 +1,15 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const stream = `${text}   ${text}   ${text}`;
+---
+
+<div class="ascii-ticker" aria-hidden="true">
+  <div class="ascii-ticker-track">
+    <span>{stream}</span>
+    <span>{stream}</span>
+  </div>
+</div>

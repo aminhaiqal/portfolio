@@ -1,0 +1,25 @@
+---
+interface Props {
+  label: string;
+  purpose: string;
+}
+
+const { label, purpose } = Astro.props;
+---
+
+<div class="image-block">
+  <div class="image-placeholder" role="img" aria-label={`${label}. Placeholder for ${purpose}`}>
+    <div class="image-chrome">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="image-content">
+      <p class="image-tag">IMAGE PLACEHOLDER</p>
+      <p class="image-label">{label}</p>
+      <pre class="image-ascii">+--------------------------+
+|  axelyn.visual.preview   |
+|  [ ui / product frame ]  |
++--------------------------+</pre>
+    </div>
+  </div>
+  <p class="image-purpose">Purpose: {purpose}</p>
+</div>

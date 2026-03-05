@@ -1,0 +1,80 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  faq?: FAQItem[];
+}
+
+const { title, description, canonical, faq = [] } = Astro.props;
+
+const image = `${canonical.replace(/\/$/, "")}/favicon.svg`;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Axelyn",
+  email: "aminh@axelyn.com",
+  url: canonical,
+  knowsAbout: [
+    "Web applications",
+    "CLI tools",
+    "Automation systems",
+    "Internal tools",
+    "APIs and integrations",
+  ],
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Axelyn",
+  url: canonical,
+  email: "aminh@axelyn.com",
+  areaServed: "Worldwide",
+  serviceType: [
+    "Custom web systems",
+    "Terminal and CLI tooling",
+    "Automation and integrations",
+    "Internal tools",
+    "API architecture",
+  ],
+  description,
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content="Axelyn" />
+<meta property="og:image" content={image} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="theme-color" content="#f6f2ea" />
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
