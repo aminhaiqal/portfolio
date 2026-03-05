@@ -1,66 +1,113 @@
 ---
 import AsciiTerminal from "@/components/AsciiTerminal";
 import AsciiTicker from "@/components/AsciiTicker.astro";
+import ContactStarter from "@/components/ContactStarter.astro";
 import FaqAccordion from "@/components/FaqAccordion";
-import ImagePlaceholder from "@/components/ImagePlaceholder.astro";
 import SEO from "@/components/seo/SEO.astro";
+import Showcase from "@/components/Showcase.astro";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import MainLayout from "@/layouts/main.astro";
 
-const siteTitle = "Axelyn — Custom Systems (Web, CLI, Automation)";
+const siteTitle = "Axelyn Engineering Studio | Product, Platform, Automation";
 const description =
-  "Axelyn builds custom systems for teams that need web applications, CLI tools, automation pipelines, internal tools, and API integrations.";
+  "Axelyn is an engineering studio where each build demonstrates high-performance software systems across product engineering, platform tooling, and automation.";
 const canonical = "https://axelyn.com/";
+const currentYear = new Date().getFullYear();
 
 const faqItems = [
   {
-    question: "What types of projects do you take?",
+    question: "What kind of clients do you work with?",
     answer:
-      "I take scoped software delivery work where clear outcomes matter: internal tools, web platforms, CLI utilities, workflow automation, and integration-heavy APIs.",
+      "Most engagements are with product and operations teams that need stronger software execution: shipping new systems, modernizing legacy workflows, or hardening delivery pipelines.",
   },
   {
-    question: "How is pricing structured?",
+    question: "How are engagements scoped?",
     answer:
-      "Most projects are fixed-scope milestones with a clear spec. For evolving systems, I use a weekly retainer with defined priorities and delivery checkpoints.",
+      "I start with a compact discovery and architecture pass, then execute through milestone-based delivery with clear acceptance criteria and weekly demos.",
   },
   {
-    question: "How long do projects take?",
+    question: "Can you work with an in-house engineering team?",
     answer:
-      "Small builds can ship in 2 to 4 weeks. Medium systems usually run 6 to 12 weeks depending on complexity, integrations, and team feedback cycles.",
+      "Yes. Axelyn can operate as an embedded execution partner alongside internal teams, handling critical paths while syncing on architecture and standards.",
   },
   {
-    question: "How do we communicate during development?",
+    question: "Do you handle post-launch ownership?",
     answer:
-      "You get a shared project board, written updates, and demos at agreed intervals. Most communication is async, with scheduled calls for key decisions.",
+      "Yes. I offer stabilization windows, reliability support, and ongoing iteration retainers after initial launch.",
   },
   {
-    question: "Who owns the code?",
+    question: "What is the typical timeline?",
     answer:
-      "You do. Source code, deployment assets, and technical documentation are handed over as project deliverables.",
-  },
-  {
-    question: "Do you provide maintenance?",
-    answer:
-      "Yes. I offer post-launch support, bug fixes, performance tuning, and feature iteration through support retainers.",
+      "Studio sprints run in 2-week cycles. Most focused builds launch in 4 to 10 weeks depending on integration depth and organizational dependencies.",
   },
 ];
 
-const serviceCards = [
+const operatingModel = [
   {
-    title: "Web-based systems",
-    body: "Internal dashboards, operator portals, admin workflows, and customer-facing web applications built for reliability and speed.",
+    title: "01 Discovery Sprint",
+    body: "Map critical workflows, define delivery goals, and align on technical constraints.",
+    detail: "Output: architecture brief + milestone plan",
   },
   {
-    title: "Terminal / CLI tools",
-    body: "Developer and ops tooling for repeatable tasks, environment setup, deployments, and secure internal workflows.",
+    title: "02 Build Cycles",
+    body: "Deliver production-ready increments in 2-week cycles with demos and decision checkpoints.",
+    detail: "Output: shippable software every cycle",
   },
   {
-    title: "Automation & integrations",
-    body: "Event-driven automations, cross-service workflows, and API integrations that remove manual operational overhead.",
+    title: "03 Launch & Handover",
+    body: "Production release, runbooks, training, and ownership transfer for engineering and operations.",
+    detail: "Output: documented system with clear owners",
+  },
+];
+
+const engagementTracks = [
+  {
+    title: "Showroom Build",
+    body: "End-to-end build for a new product or internal system.",
+    pace: "6-12 weeks",
   },
   {
-    title: "Architecture & system hardening",
-    body: "Codebase audits, dependency strategy, observability improvements, and pragmatic hardening for production stability.",
+    title: "Platform Upgrade",
+    body: "Targeted modernization of delivery tooling and operational reliability.",
+    pace: "4-8 weeks",
+  },
+  {
+    title: "Embedded Solo Partner",
+    body: "I plug directly into your roadmap to accelerate a critical initiative.",
+    pace: "Monthly retainer",
+  },
+];
+
+const pricingPlans = [
+  {
+    tier: "Starter Build",
+    price: "from RM3,500",
+    fit: "For first workflow improvements and MVP internal tools for Malaysia teams.",
+    includes: [
+      "1 focused workflow",
+      "1-2 weeks delivery",
+      "Core handover docs",
+    ],
+  },
+  {
+    tier: "Core System",
+    price: "from RM9,800",
+    fit: "For production-ready systems with integrations and role-based access.",
+    includes: [
+      "2-3 workflows",
+      "3-6 weeks delivery",
+      "Launch support included",
+    ],
+  },
+  {
+    tier: "Founding Partner",
+    price: "RM2,500-RM6,500 (intro offer)",
+    fit: "For early Malaysia clients: discounted delivery in exchange for testimonial or case study permission.",
+    includes: [
+      "Priority roadmap support",
+      "Flexible milestone billing",
+      "Weekly planning + demos",
+    ],
   },
 ];
 ---
@@ -70,16 +117,16 @@ const serviceCards = [
 
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <div class="booking-strip" aria-hidden="true">BOOKING FOR Q2'26 · BOOKING FOR Q2'26 · BOOKING FOR Q2'26</div>
+  <div class="booking-strip" aria-hidden="true">AXELYN ENGINEERING STUDIO · NOW BOOKING Q2 + Q3 2026</div>
 
-  <header class="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur">
+  <header class="sticky top-0 z-20 border-b border-border/70 bg-background/88 backdrop-blur-md">
     <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Main navigation">
-      <a href="#top" class="brand">Axelyn</a>
+      <a href="#top" class="brand">AXELYN / STUDIO</a>
       <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#showcase">Work</a></li>
+        <li><a href="#model">Operating model</a></li>
+        <li><a href="#engagements">Engagements</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -88,17 +135,17 @@ const serviceCards = [
 
   <main id="main-content" class="mx-auto max-w-6xl px-5 pb-24 md:pb-28">
     <section id="top" class="hero-stack py-16 md:py-24">
-      <div class="space-y-5 text-center">
-        <h1 class="text-4xl leading-tight font-semibold tracking-tight text-foreground md:text-6xl">Custom software for how your team actually works.</h1>
-        <p class="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
+      <div class="space-y-5 text-center hero-reveal">
+        <p class="hero-kicker">Small studio. Real machines. Built by Axelyn.</p>
+        <h1 class="text-4xl leading-tight font-semibold tracking-tight text-foreground md:text-6xl">
+          Custom software for how your team actually works
+        </h1>
+        <p class="mx-auto max-w-3xl text-base text-muted-foreground md:text-lg">
           Axelyn builds web apps, CLI tools, and automation that replace spreadsheets, scripts, and manual workflows.
         </p>
-        <p class="mx-auto max-w-2xl text-base text-foreground">
-          If you can describe the workflow, Axelyn can build the software.
-        </p>
         <div class="flex flex-wrap justify-center gap-3">
-          <a class="btn-primary" href="mailto:aminh@axelyn.com?subject=Start%20a%20project%20with%20Axelyn">Start a project</a>
-          <a class="btn-secondary" href="#process">See how it works</a>
+          <a class="btn-primary" href="mailto:aminh@axelyn.com?subject=Engineering%20Showroom%20Engagement">Start a project</a>
+          <a class="btn-secondary" href="#showcase">View example systems</a>
         </div>
       </div>
 
@@ -107,215 +154,122 @@ const serviceCards = [
       </div>
     </section>
 
-    <section id="about" class="section-gap" aria-labelledby="about-heading">
-      <AsciiTicker text="axelyn://builder-profile//systems-thinking//operator-first-delivery//" />
-      <h2 id="about-heading" class="section-title">About Axelyn</h2>
-      <div class="about-panel">
-        <p>
-          Axelyn is an independent software studio focused on one thing: turning messy team workflows into stable,
-          usable systems.
-        </p>
-        <p>
-          Projects are built with high signal communication, tight scope, and practical tradeoffs so teams can ship
-          and operate with confidence.
-        </p>
-        <div class="about-list" role="list" aria-label="Axelyn working principles">
-          <span role="listitem">Outcome-first delivery</span>
-          <span role="listitem">Spec before build</span>
-          <span role="listitem">Clear handover and docs</span>
-        </div>
-      </div>
-    </section>
+    <Showcase />
 
-    <section id="services" class="section-gap" aria-labelledby="services-heading">
-      <AsciiTicker
-        text="[ web systems ]   [ cli workflows ]   [ automation pipelines ]   [ internal tools ]   [ api integrations ]"
-      />
-      <h2 id="services-heading" class="section-title">Services</h2>
-      <p class="mb-4 text-sm text-muted-foreground">Axelyn builds custom systems: web apps, CLI tools, and automation.</p>
-      <div class="grid gap-5 sm:grid-cols-2">
+    <section id="model" class="section-gap" aria-labelledby="model-heading">
+      <AsciiTicker text=":: discovery sprint => build cycles => launch + transfer ::" />
+      <h2 id="model-heading" class="section-title">Operating model</h2>
+      <p class="section-intro">A lightweight model that keeps scope grounded and delivery momentum high.</p>
+      <div class="grid gap-5 md:grid-cols-3">
         {
-          serviceCards.map((service) => (
-            <Card className="h-full">
+          operatingModel.map((step) => (
+            <Card>
               <CardHeader>
-                <CardTitle>{service.title}</CardTitle>
-                <CardDescription>{service.body}</CardDescription>
+                <CardTitle>{step.title}</CardTitle>
+                <CardDescription>{step.body}</CardDescription>
               </CardHeader>
+              <CardContent>
+                <p class="meta-note">{step.detail}</p>
+              </CardContent>
             </Card>
           ))
         }
       </div>
     </section>
 
-    <section id="process" class="section-gap" aria-labelledby="process-heading">
-      <AsciiTicker text=":: discovery => spec => build => ship :: :: discovery => spec => build => ship ::" />
-      <h2 id="process-heading" class="section-title">Process</h2>
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>1. Discovery</CardTitle>
-            <CardDescription>Clarify business goal, users, constraints, and what success means.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>2. Specification</CardTitle>
-            <CardDescription>Define scope, architecture, milestones, and delivery plan.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>3. Build</CardTitle>
-            <CardDescription>Implement in small increments with reviewable updates.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>4. Ship &amp; Support</CardTitle>
-            <CardDescription>Deploy, document handover, and provide maintenance options.</CardDescription>
-          </CardHeader>
-        </Card>
+    <section id="engagements" class="section-gap" aria-labelledby="engagements-heading">
+      <AsciiTicker text="[studio build] [platform upgrade] [embedded solo partner]" />
+      <h2 id="engagements-heading" class="section-title">Engagement formats</h2>
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          engagementTracks.map((track) => (
+            <article class="engagement-card">
+              <p class="engagement-pace">{track.pace}</p>
+              <h3>{track.title}</h3>
+              <p>{track.body}</p>
+            </article>
+          ))
+        }
       </div>
     </section>
 
-    <section id="work" class="section-gap" aria-labelledby="work-heading">
-      <AsciiTicker text="> selected systems > selected systems > selected systems >" />
-      <h2 id="work-heading" class="section-title">Selected work</h2>
-      <div class="showcase-carousel" aria-label="Case studies gallery">
-        <article class="showcase-item showcase-panel">
-          <ImagePlaceholder
-            label="Internal operations dashboard"
-            purpose="Hero screenshot of a multi-location operations dashboard with alert states and workflow approvals."
-          />
-          <div class="showcase-copy">
-            <p class="showcase-line">Operations dashboard · Internal tool · Retail ops</p>
-            <h3 class="showcase-title">Real-time anomaly tracking for distributed teams</h3>
-            <ul class="showcase-meta" aria-label="Project metadata">
-              <li>Timeline: 6 weeks</li>
-              <li>Team: Ops + HQ</li>
-              <li>Stack: Web + API</li>
-            </ul>
-            <p>Outcome: reduced daily reconciliation time by 45% across 18 stores.</p>
-          </div>
-        </article>
-
-        <article class="showcase-item showcase-panel">
-          <ImagePlaceholder
-            label="CLI deployment workflow"
-            purpose="Terminal and command palette view showing guarded deploy steps, release checks, and rollback actions."
-          />
-          <div class="showcase-copy">
-            <p class="showcase-line">Developer tooling · CLI automation · Platform team</p>
-            <h3 class="showcase-title">Release toolkit that standardized deployment safety</h3>
-            <ul class="showcase-meta" aria-label="Project metadata">
-              <li>Timeline: 4 weeks</li>
-              <li>Team: Platform</li>
-              <li>Stack: CLI + CI</li>
-            </ul>
-            <p>Outcome: cut release errors by 60% and improved onboarding speed.</p>
-          </div>
-        </article>
-
-        <article class="showcase-item showcase-panel">
-          <ImagePlaceholder
-            label="Pipeline monitoring interface"
-            purpose="Monitoring view for ingestion jobs, data quality checks, and API synchronization status over time."
-          />
-          <div class="showcase-copy">
-            <p class="showcase-line">Data pipelines · Integration systems · Analytics</p>
-            <h3 class="showcase-title">Automated ingestion and validation across vendor APIs</h3>
-            <ul class="showcase-meta" aria-label="Project metadata">
-              <li>Timeline: 8 weeks</li>
-              <li>Team: Data + Ops</li>
-              <li>Stack: Python + SQL</li>
-            </ul>
-            <p>Outcome: replaced weekly manual work with a daily reliable pipeline.</p>
-          </div>
-        </article>
+    <section id="pricing" class="section-gap" aria-labelledby="pricing-heading">
+      <AsciiTicker text="$ transparent pricing // founder-friendly rates // talk-first approach $" />
+      <h2 id="pricing-heading" class="section-title">Malaysia-friendly pricing from day one</h2>
+      <p class="section-intro">
+        I share pricing early so teams can decide quickly. If budget is tight, we can start with a smaller scoped milestone and prove value first.
+      </p>
+      <div class="pricing-grid">
+        {
+          pricingPlans.map((plan) => (
+            <article class="pricing-card">
+              <p class="pricing-tier">{plan.tier}</p>
+              <p class="pricing-amount">{plan.price}</p>
+              <p class="pricing-fit">{plan.fit}</p>
+              <ul aria-label={`${plan.tier} details`}>
+                {plan.includes.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))
+        }
       </div>
-    </section>
-
-    <section id="capabilities" class="section-gap" aria-labelledby="capabilities-heading">
-      <AsciiTicker text="[capabilities matrix] [delivery scope] [typical stack] [operational fit]" />
-      <h2 id="capabilities-heading" class="section-title">Capabilities matrix</h2>
-      <div class="overflow-x-auto rounded-xl border border-border bg-card">
-        <table class="min-w-full text-sm">
-          <thead class="bg-muted/50 text-left text-foreground">
-            <tr>
-              <th class="px-4 py-3 font-semibold">Area</th>
-              <th class="px-4 py-3 font-semibold">What I deliver</th>
-              <th class="px-4 py-3 font-semibold">Typical tools</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-border/80 text-muted-foreground">
-            <tr>
-              <td class="px-4 py-3 text-foreground">Web systems</td>
-              <td class="px-4 py-3">Dashboards, portals, workflow apps</td>
-              <td class="px-4 py-3">Astro, React, Node, PostgreSQL</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-foreground">CLI tools</td>
-              <td class="px-4 py-3">Deployment tooling, task runners, developer automation</td>
-              <td class="px-4 py-3">TypeScript, Node, Bash, Python</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-foreground">Automation</td>
-              <td class="px-4 py-3">Event triggers, orchestration, notification pipelines</td>
-              <td class="px-4 py-3">Webhooks, queues, cron, serverless jobs</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-foreground">Data pipelines</td>
-              <td class="px-4 py-3">Ingestion flows, transformation jobs, quality checks</td>
-              <td class="px-4 py-3">Python, SQL, Docker, scheduled workers</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-foreground">API integrations</td>
-              <td class="px-4 py-3">Service connectivity, auth flows, resilient sync</td>
-              <td class="px-4 py-3">REST, GraphQL, OAuth, OpenAPI</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <aside class="pricing-note" aria-label="Pricing reassurance">
+        <p class="pricing-note-title">No-pressure first conversation</p>
+        <p>
+          We can do a short call to align on your goals before any agreement is made. After that, I will send a practical scope and exact RM quote.
+        </p>
+      </aside>
     </section>
 
     <section id="faq" class="section-gap" aria-labelledby="faq-heading">
-      <AsciiTicker text="? faq stream ? faq stream ? faq stream ? faq stream ?" />
-      <h2 id="faq-heading" class="section-title">FAQ</h2>
+      <AsciiTicker text="? studio faq stream ? studio faq stream ?" />
+      <h2 id="faq-heading" class="section-title">Frequently asked questions</h2>
       <FaqAccordion items={faqItems} client:visible />
     </section>
 
     <section id="contact" class="section-gap" aria-labelledby="contact-heading">
-      <AsciiTicker text="connect:: aminh@axelyn.com :: start-project :: ship-software ::" />
-      <h2 id="contact-heading" class="section-title">Start a project with Axelyn.</h2>
+      <h2 id="contact-heading" class="section-title">Bring your next system into the studio.</h2>
       <p class="text-xl font-semibold text-foreground md:text-2xl">
         <a href="mailto:aminh@axelyn.com">aminh@axelyn.com</a>
       </p>
-      <form class="mt-6 grid gap-4 rounded-xl border border-border bg-card p-5" action="mailto:aminh@axelyn.com" method="post" enctype="text/plain">
-        <label class="grid gap-1 text-sm" for="name">
-          Name
-          <input id="name" name="name" type="text" required class="input-field" />
-        </label>
-        <label class="grid gap-1 text-sm" for="email">
-          Email
-          <input id="email" name="email" type="email" required class="input-field" />
-        </label>
-        <label class="grid gap-1 text-sm" for="message">
-          Message
-          <textarea id="message" name="message" rows={5} required class="input-field"></textarea>
-        </label>
-        <button class="btn-primary w-fit" type="submit">Send message</button>
-      </form>
+      <p class="mt-2 max-w-2xl text-sm text-muted-foreground">
+        Share your goals, architecture constraints, and timeline. You will get a practical response with proposed scope and next steps.
+      </p>
+      <p class="contact-trust-note mt-2 max-w-2xl text-sm text-muted-foreground">
+        If you prefer, we can start with a short conversation first. No commitment required.
+      </p>
+      <div class="mt-6">
+        <ContactStarter />
+      </div>
     </section>
   </main>
 
   <footer class="site-footer border-t border-border/70">
-    <div class="mx-auto max-w-6xl space-y-3 px-5 py-8 text-sm">
-      <AsciiTicker text="axelyn://custom-systems//web+cli+automation//axelyn://custom-systems//" />
-      <p class="font-semibold">Axelyn</p>
-      <p><a href="mailto:aminh@axelyn.com">aminh@axelyn.com</a></p>
-      <p>Timezone: Asia/Kuala_Lumpur</p>
-      <p>Axelyn builds custom systems: web apps, CLI tools, and automation.</p>
-      <p class="footer-keywords">Keywords: custom software systems, web apps, CLI tools, automation, internal tools, APIs, integrations.</p>
+    <div class="mx-auto max-w-6xl space-y-4 px-5 py-10 text-sm">
+      <div class="footer-shell">
+        <div class="footer-brand-block">
+          <p class="footer-eyebrow">AXELYN / STUDIO</p>
+          <h3>Build the system your team wishes it already had.</h3>
+          <p>
+            Independent engineering studio for product systems, platform tooling, and automation programs.
+          </p>
+          <div class="footer-chips" aria-label="Capabilities">
+            <span>Product Systems</span>
+            <span>Platform Tooling</span>
+            <span>Automation</span>
+          </div>
+        </div>
+        <aside class="footer-contact-card" aria-label="Contact details">
+          <p class="footer-label">Contact</p>
+          <p><a class="footer-email" href="mailto:aminh@axelyn.com">aminh@axelyn.com</a></p>
+          <p class="footer-timezone">Timezone: Asia/Kuala_Lumpur</p>
+          <div class="footer-actions">
+            <a class="footer-btn" href="mailto:aminh@axelyn.com?subject=Engineering%20Showroom%20Engagement">Start a project</a>
+            <a class="footer-link" href="#top">Back to top</a>
+          </div>
+        </aside>
+      </div>
+      <p class="footer-signoff">{currentYear} Axelyn Engineering Studio. Designed and engineered by Axelyn.</p>
     </div>
   </footer>
 </MainLayout>

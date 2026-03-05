@@ -1,0 +1,103 @@
+---
+const contactEmail = "aminh@axelyn.com";
+---
+
+<div class="contact-starter" aria-labelledby="contact-starter-heading">
+  <div class="contact-starter-copy">
+    <h3 id="contact-starter-heading">Send a quick project brief</h3>
+    <p>
+      Use this guided format so I can understand your context fast and reply with practical next steps.
+    </p>
+    <ul class="contact-starter-list" aria-label="Recommended details">
+      <li>What you need to build or improve</li>
+      <li>Current blockers and constraints</li>
+      <li>Expected timeline and urgency</li>
+    </ul>
+    <p class="contact-starter-trust">
+      No pressure: we can do a short intro call first before any scope, quote, or commitment.
+    </p>
+  </div>
+
+  <form class="contact-starter-form" data-contact-starter>
+    <label for="starter-name">Name</label>
+    <input id="starter-name" name="name" type="text" placeholder="Your name" required />
+
+    <label for="starter-company">Company or team</label>
+    <input id="starter-company" name="company" type="text" placeholder="Optional" />
+
+    <label for="starter-goal">What do you want to achieve?</label>
+    <textarea
+      id="starter-goal"
+      name="goal"
+      rows="3"
+      placeholder="Example: replace manual spreadsheet workflow with an internal web app."
+      required
+    ></textarea>
+
+    <label for="starter-constraints">Constraints</label>
+    <textarea
+      id="starter-constraints"
+      name="constraints"
+      rows="2"
+      placeholder="Existing systems, compliance, deadlines, budget range, team limits."
+    ></textarea>
+
+    <div class="contact-starter-grid">
+      <div>
+        <label for="starter-timeline">Timeline</label>
+        <input id="starter-timeline" name="timeline" type="text" placeholder="Example: 6-8 weeks" />
+      </div>
+      <div>
+        <label for="starter-call">How should we start?</label>
+        <select id="starter-call" name="callPreference">
+          <option value="Yes - I'd like a short intro call first.">Intro call first</option>
+          <option value="Email first is fine.">Email first</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-primary starter-submit" type="submit">Open email draft</button>
+    <p class="contact-starter-note">
+      This opens your email app with a structured draft to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+    </p>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector("[data-contact-starter]");
+
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const get = (key) => String(data.get(key) ?? "").trim();
+
+      const name = get("name");
+      const company = get("company") || "Not provided";
+      const goal = get("goal");
+      const constraints = get("constraints") || "Not provided";
+      const timeline = get("timeline") || "Not provided";
+      const callPreference = get("callPreference") || "Intro call first";
+
+      const subject = `Project brief from ${name || "website visitor"}`;
+      const bodyLines = [
+        "Hi Amin,",
+        "",
+        "Here is my project brief:",
+        "",
+        `Name: ${name || "Not provided"}`,
+        `Company/Team: ${company}`,
+        `Goal: ${goal || "Not provided"}`,
+        `Constraints: ${constraints}`,
+        `Timeline: ${timeline}`,
+        `Preferred start: ${callPreference}`,
+        "",
+        "If useful, I am open to a short intro call before discussing scope or terms.",
+      ];
+
+      const mailto = `mailto:${"aminh@axelyn.com"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      window.location.href = mailto;
+    });
+  }
+</script>

@@ -1,0 +1,65 @@
+---
+import DashboardMock from "@/components/DashboardMock.astro";
+import IsometricPipelineDiagram from "@/components/IsometricPipelineDiagram.astro";
+import TerminalDemo from "@/components/TerminalDemo";
+import ShowcaseCard from "@/components/showcase/ShowcaseCard.astro";
+
+const cards = [
+  {
+    title: "Workflow Automation System",
+    badge: "Automation",
+    description:
+      "Replaces spreadsheet chains, one-off scripts, and manual workflows with reliable automation pipelines that run on schedule and stay observable.",
+    capabilities: ["API integrations", "Data processing", "Scheduled jobs", "Reporting", "Dashboards"],
+    usedFor: ["Weekly reporting", "Syncing systems", "Operational automation"],
+    visual: "pipeline" as const,
+  },
+  {
+    title: "Developer CLI Toolkit",
+    badge: "CLI",
+    description:
+      "Consolidates scattered scripts into repeatable commands so teams can scaffold projects, deploy confidently, and run platform workflows with less drift.",
+    capabilities: ["Scaffolding", "Environment management", "Workflow orchestration", "Deployment helpers"],
+    usedFor: ["Developer productivity", "Infrastructure workflows", "Repeatable releases"],
+    visual: "terminal" as const,
+  },
+  {
+    title: "Operations Dashboard",
+    badge: "Dashboard",
+    description:
+      "Builds internal tools and admin dashboards that centralize operational metrics, approvals, and actions in a single system for support and ops teams.",
+    capabilities: ["Auth", "Metrics", "Activity logs", "Workflow management", "Monitoring"],
+    usedFor: ["Internal ops", "Admin panels", "Team dashboards"],
+    visual: "dashboard" as const,
+  },
+];
+---
+
+<section id="showcase" class="section-gap showcase-section" aria-labelledby="showcase-heading">
+  <div class="showcase-header">
+    <p class="showcase-kicker">Work</p>
+    <h2 id="showcase-heading" class="section-title">Systems built by Axelyn</h2>
+    <p class="section-intro">
+      Examples of the kinds of software Axelyn builds: automation pipelines, developer tooling, and internal dashboards.
+      Axelyn builds web apps, CLI tools, and automation.
+    </p>
+  </div>
+
+  <div class="showcase-stack">
+    {
+      cards.map((card) => (
+        <ShowcaseCard
+          title={card.title}
+          badge={card.badge}
+          description={card.description}
+          capabilities={card.capabilities}
+          usedFor={card.usedFor}
+        >
+          {card.visual === "pipeline" && <IsometricPipelineDiagram slot="visual" />}
+          {card.visual === "terminal" && <TerminalDemo slot="visual" client:visible />}
+          {card.visual === "dashboard" && <DashboardMock slot="visual" />}
+        </ShowcaseCard>
+      ))
+    }
+  </div>
+</section>

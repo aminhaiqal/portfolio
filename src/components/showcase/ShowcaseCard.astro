@@ -1,0 +1,47 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
+interface Props {
+  title: string;
+  badge: string;
+  description: string;
+  capabilities: string[];
+  usedFor: string[];
+  ctaLabel?: string;
+}
+
+const { title, badge, description, capabilities, usedFor, ctaLabel = "View details" } = Astro.props;
+---
+
+<Card className="showcase-card">
+  <div class="showcase-card-copy">
+    <Badge className="showcase-badge">{badge}</Badge>
+    <h3 class="showcase-card-title">{title}</h3>
+    <p class="showcase-card-description">{description}</p>
+
+    <div class="showcase-lists">
+      <div>
+        <p class="showcase-list-title">Typical capabilities</p>
+        <ul>
+          {capabilities.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="showcase-list-title">Used for</p>
+        <ul>
+          {usedFor.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <Button className="showcase-card-cta" disabled>
+      {ctaLabel}
+    </Button>
+  </div>
+
+  <div class="showcase-card-visual" aria-label={`${title} visual demo`}>
+    <slot name="visual" />
+  </div>
+</Card>
